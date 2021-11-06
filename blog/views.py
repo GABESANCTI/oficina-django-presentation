@@ -80,3 +80,12 @@ def visualizar_post(request, pk):
         'form': form
     }
     return render(request, 'visualizar_post.html', context)
+
+
+def post_categoria(request, categoria):
+    posts = Post.objects.filter(categorias__nome__contains=categoria).order_by('-criado_em')
+    context = {
+        'categoria': categoria,
+        'posts': posts,
+    }
+    return render(request, 'post_categoria.html', context)

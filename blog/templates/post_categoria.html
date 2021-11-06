@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block container %}
+    <div class="col-md-8 offset-md-2 mt-5">
+        <h1>{{ categoria|title }}</h1>
+        <hr>
+        {% for post in posts %}
+            <h2><a href="{% url 'visualizar_post' post.pk %}">{{ post.titulo }}</a></h2>
+            <small>
+                {{ post.criado_em }} |&nbsp;
+                Categorias:&nbsp;
+                {% for categoria in post.categorias.all %}
+                    <a href="{% url 'post_categoria' categoria.nome %}">
+                        {{ categoria.nome }}
+                    </a>&nbsp;
+                {% endfor %}
+            </small>
+            <p>{{ post.conteudo|slice:':400' }}...</p>
+        {% endfor %}
+    </div>
+{% endblock %}
