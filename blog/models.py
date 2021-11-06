@@ -17,3 +17,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.titulo
+
+
+class Comentario(models.Model):
+    autor = models.CharField(max_length=100)
+    mensagem = models.TextField()
+    criado_em = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)

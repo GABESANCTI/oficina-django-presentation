@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
-from blog.forms import CategoriaForm
-from blog.models import Categoria, Post
+from blog.forms import CategoriaForm, ComentarioForm
+from blog.models import Categoria, Post, Comentario
 
 
 def inserir_categoria(request):
@@ -56,3 +56,27 @@ def index(request):
         'posts': posts,
     }
     return render(request, 'index.html', context)
+
+
+def visualizar_post(request, pk):
+    post = Post.objects.get(pk=pk)
+    comentarios = Comentario.objects.filter(post=post)
+
+    form = ComentarioForm()
+    if request.method == 'POST':
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+            comentario = Comentario(
+                autor=form.cleaned_data['autor'],
+                mensagem=form.cleaned_data['mensagem'],
+                post=post
+            )
+            comentario.save()
+            form = ComentarioForm()
+
+    context = {
+        'post': post,
+        'comentarios': comentarios,
+        'form': form
+    }
+    return render(request, 'visualizar_post.html', context)
