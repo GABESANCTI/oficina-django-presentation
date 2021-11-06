@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from blog.forms import CategoriaForm
-from blog.models import Categoria
+from blog.models import Categoria, Post
 
 
 def inserir_categoria(request):
@@ -48,3 +48,11 @@ def excluir_categoria(request, id):
         categoria.delete()
 
     return redirect('visualizar_categorias')
+
+
+def index(request):
+    posts = Post.objects.all().order_by('-criado_em')
+    context = {
+        'posts': posts,
+    }
+    return render(request, 'index.html', context)

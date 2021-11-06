@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block container %}
+    <div class="col-md-8 offset-md-2">
+        <h1 class="mt-5">Publicações</h1>
+        <hr>
+        {% for post in posts %}
+            <div class="my-5">
+                <h2><a href="#">{{ post.titulo }}</a></h2>
+                <small>
+                    {{ post.criado_em }} |&nbsp;
+                    Categorias:&nbsp;
+                    {% for categoria in post.categorias.all %}
+                        <a href="#">
+                            {{ categoria.nome }}
+                        </a>&nbsp;
+                    {% endfor %}
+                </small>
+                <p>{{ post.conteudo | slice:':400' }}...</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
