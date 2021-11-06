@@ -17,3 +17,11 @@ def inserir_categoria(request):
         'form': form
     }
     return render(request, 'inserir_categoria.html', context)
+
+
+def visualizar_categorias(request):
+    categorias = Categoria.objects.all()
+    context = {
+        'categorias': categorias,
+    }
+    return render(request, 'visualizar_categorias.html', context)
