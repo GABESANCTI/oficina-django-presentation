@@ -25,3 +25,17 @@ def visualizar_categorias(request):
         'categorias': categorias,
     }
     return render(request, 'visualizar_categorias.html', context)
+
+
+def editar_categoria(request, id):
+    categoria_original = Categoria.objects.get(id=id)
+    form = CategoriaForm(request.POST or None, instance=categoria_original)
+    if request.method == 'POST':
+        if form.is_valid():
+            nome = form.cleaned_data['nome']
+            categoria_original.nome = nome
+            categoria_original.save(force_update=True)
+    context = {
+        'form': form,
+    }
+    return render(request, 'editar_categoria.html', context)
