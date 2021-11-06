@@ -13,7 +13,8 @@
 <body style="background-color: #eee;">
 
 <div class="container">
-    <form class="d-flex flex-column align-items-center p-5 my-5 bg-light">
+    <form method="post" action="{% url 'inserir_categoria' %}"
+          class="d-flex flex-column align-items-center p-5 my-5 bg-light">
         <h2 class="text-center">Inserir Categoria</h2>
         {% csrf_token %}
         <div class="form-group pt-4">
