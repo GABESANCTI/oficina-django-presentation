@@ -1,18 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Inserir Categoria</title>
+{% extends 'base.html' %}
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-<body style="background-color: #eee;">
+{% block title %}
+    Inserir Categoria
+{% endblock %}
 
-<div class="container">
+{% block container %}
     <form method="post" action="{% url 'inserir_categoria' %}"
           class="d-flex flex-column align-items-center p-5 my-5 bg-light">
         <h2 class="text-center">Inserir Categoria</h2>
@@ -20,7 +12,7 @@
         <div class="form-group pt-4">
             <label class="control-label">Nome:</label>
             {{ form.nome }}
-						<div class="text-danger">{{ form.nome.errors|striptags }}</div>
+            <div class="text-danger">{{ form.nome.errors|striptags }}</div>
         </div>
 
         <div class="d-flex justify-content-center mt-2">
@@ -28,15 +20,4 @@
             <button class="btn btn-success" type="submit">Salvar</button>
         </div>
     </form>
-</div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+{% endblock %}
