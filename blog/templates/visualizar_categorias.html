@@ -11,6 +11,7 @@
         <tr>
             <th scope="col">#</th>
             <th>Nome</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -18,7 +19,41 @@
             <tr>
                 <th scope="row">{{ categoria.id }}</th>
                 <td>{{ categoria.nome }}</td>
+                <td>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#modalConfirmaExclusao">
+                        Excluir
+                    </button>
+                </td>
             </tr>
+
+            <!-- Modal -->
+            <form method="post" action="{% url 'excluir_categoria' categoria.id %}"
+                  class="d-flex flex-column align-items-center bg-light">
+                {% csrf_token %}
+                <div class="modal fade" id="modalConfirmaExclusao" tabindex="-1" role="dialog"
+                     aria-labelledby="modalConfirmaExclusaoLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalConfirmaExclusaoLabel">
+                                    Tem certeza que deseja excluir esta Categoria?
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="d-flex justify-content-center mt-2">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        Cancelar
+                                    </button>
+                                    <button type="submit" class="btn btn-danger mx-2">Confirmar exclusão</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         {% endfor %}
         </tbody>
     </table>

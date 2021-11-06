@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from blog.forms import CategoriaForm
 from blog.models import Categoria
@@ -39,3 +39,11 @@ def editar_categoria(request, id):
         'form': form,
     }
     return render(request, 'editar_categoria.html', context)
+
+
+def excluir_categoria(request, id):
+    categoria = Categoria.objects.get(id=id)
+    if request.method == 'POST':
+        categoria.delete()
+
+    return redirect('visualizar_categorias')
