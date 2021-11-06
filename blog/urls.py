@@ -1,7 +1,7 @@
-from django.contrib import admin
-from django.urls import path, include
-from .views import index
+from django.urls import path
+
+from blog.views import inserir_categoria
 
 urlpatterns = [
-    path('', index),
+    path('inserir_categoria/', inserir_categoria),
 ]
