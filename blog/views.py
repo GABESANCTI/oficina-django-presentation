@@ -12,7 +12,7 @@ def inserir_categoria(request):
             nome = form.cleaned_data['nome']
             categoria = Categoria(nome=nome)
             categoria.save()
-            form = CategoriaForm()
+            return redirect('visualizar_categorias')
     context = {
         'form': form
     }
@@ -35,6 +35,7 @@ def editar_categoria(request, id):
             nome = form.cleaned_data['nome']
             categoria_original.nome = nome
             categoria_original.save(force_update=True)
+            return redirect('visualizar_categorias')
     context = {
         'form': form,
     }

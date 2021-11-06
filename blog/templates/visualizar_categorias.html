@@ -5,12 +5,16 @@
 {% endblock %}
 
 {% block container %}
-    <h1 class="mt-5">Categorias</h1>
+    <div class="mt-5">
+        <h1>Categorias</h1>
+        <a href="{% url 'inserir_categoria' %}" class="btn btn-primary my-3">Inserir</a>
+    </div>
     <table class="table table-striped">
         <thead>
         <tr>
             <th scope="col">#</th>
             <th>Nome</th>
+            <th></th>
             <th></th>
         </tr>
         </thead>
@@ -19,6 +23,7 @@
             <tr>
                 <th scope="row">{{ categoria.id }}</th>
                 <td>{{ categoria.nome }}</td>
+                <td><a class="btn btn-info" href="{% url 'editar_categoria' categoria.id %}">Editar</a></td>
                 <td>
                     <button class="btn btn-danger" data-toggle="modal" data-target="#modalConfirmaExclusao">
                         Excluir
