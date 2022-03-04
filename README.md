@@ -16,10 +16,10 @@ em um Post através de uma interface web criada com Bootstrap.
 
 ### Tecnologias utilizadas:
 
-- Django
+- Django 3.2
 - SQLite
 - HTML
-- Bootstrap
+- Bootstrap 4
 
 ### [Roteiro utilizado na apresentação](presentation/presentation.md)
 
