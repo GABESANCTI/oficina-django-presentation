@@ -1,6 +1,8 @@
 from django.urls import path
 
-from blog.views import *
+from blog.views import (editar_categoria, excluir_categoria, index,
+                        inserir_categoria, post_categoria,
+                        visualizar_categorias, visualizar_post)
 
 urlpatterns = [
     path('', index, name='index'),

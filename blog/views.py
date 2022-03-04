@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
 
 from blog.forms import CategoriaForm, ComentarioForm
-from blog.models import Categoria, Post, Comentario
+from blog.models import Categoria, Comentario, Post
 
 
 def inserir_categoria(request):
